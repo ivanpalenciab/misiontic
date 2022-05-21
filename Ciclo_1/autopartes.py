@@ -22,9 +22,9 @@ def AutoPartes(ventas:list):
 
 def consultaRegistro(ventas,idProducto):
     cont = 0
-    for i in ventas['Id']:
-        if i == idProducto:
-            id = i
+    while cont < len(ventas['Id']):
+        if ventas['Id'][cont] == idProducto:
+            id = ventas['Id'][cont]
             dproduct=ventas['descripcion_producto'][cont]
             npartes = ventas['numero_parte_producto'][cont]
             cant_ven = ventas['cant_prod_vend'][cont]
@@ -32,14 +32,23 @@ def consultaRegistro(ventas,idProducto):
             nombre_comprador = ventas['nombre_comprador'][cont]
             cedula_comprador = ventas['Cedeula_comprador'][cont]
             fecha=ventas['Fecha_venta'][cont]
-            cont +1
+            cont +=1
+            
             
 
             print( f'Producto consultado : {id} Descripción {dproduct} #Parte {npartes} Cantidad vendida {cant_ven} Stock {stock} Comprador {nombre_comprador} Documento {cedula_comprador} Fecha Venta {fecha}')
             break
 
         else:
-            print('No hay registro de venta de ese producto')
+            if cont == len(ventas['Id']):
+                print('No hay registro de venta de ese producto')
+                cont +=1
+            elif cont != len(ventas['Id']):
+                cont +=1
+                continue
+            continue
+        
+        #cont +=1
 
          
 
@@ -48,5 +57,5 @@ lista = [(10,'cohete militar',1,2,200,'Vladimir putin',100,'12/06/2020'),(100,'a
 registro = AutoPartes(lista)
 
 consulta =consultaRegistro(registro,1)
-#consultaRegistro(registro,2)
-print(len(registro['Id']))
+consultaRegistro(registro,2)
+#print(len(registro['Id']))

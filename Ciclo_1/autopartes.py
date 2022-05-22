@@ -39,7 +39,12 @@ def consultaRegistro(ventas,idProducto):
             break
 
         else:
-            print('No hay registro de venta de ese producto')
+            if len(ventas['Id'])-1 == cont:
+                print('No hay registro de venta de ese producto')
+                cont +1
+            else:
+                cont +1
+                continue
 
          
 
@@ -48,5 +53,5 @@ lista = [(10,'cohete militar',1,2,200,'Vladimir putin',100,'12/06/2020'),(100,'a
 registro = AutoPartes(lista)
 
 consulta =consultaRegistro(registro,1)
-#consultaRegistro(registro,2)
-print(len(registro['Id']))
+consultaRegistro(registro,2)
+#print(len(registro['Id']))

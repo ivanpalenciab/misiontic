@@ -13,7 +13,7 @@ def AutoPartes(ventas:list):
         
 
     diccionario['Id']=IDs_producto ; diccionario['descripcion_producto']=descripciones_prod;diccionario['numero_parte_producto']=partes_prod
-    diccionario['cant_prod_vend']= cant_vend; diccionario['stock_´roducto']=stock_prod
+    diccionario['cant_prod_vend']= cant_vend; diccionario['stock_producto']=stock_prod
     diccionario['nombre_comprador']=nombre_compradores ; diccionario['Cedeula_comprador']=IDs_compradores
     diccionario['Fecha_venta']=fechas_venta
     
@@ -28,7 +28,7 @@ def consultaRegistro(ventas,idProducto):
             dproduct=ventas['descripcion_producto'][cont]
             npartes = ventas['numero_parte_producto'][cont]
             cant_ven = ventas['cant_prod_vend'][cont]
-            stock=ventas['stock_´roducto'][cont]
+            stock=ventas['stock_producto'][cont]
             nombre_comprador = ventas['nombre_comprador'][cont]
             cedula_comprador = ventas['Cedeula_comprador'][cont]
             fecha=ventas['Fecha_venta'][cont]

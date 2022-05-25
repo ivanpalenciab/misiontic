@@ -13,7 +13,7 @@ def AutoPartes(ventas:list):
         
 
     diccionario['Id']=IDs_producto ; diccionario['descripcion_producto']=descripciones_prod;diccionario['numero_parte_producto']=partes_prod
-    diccionario['cant_prod_vend']= cant_vend; diccionario['stock_´roducto']=stock_prod
+    diccionario['cant_prod_vend']= cant_vend; diccionario['stock_producto']=stock_prod
     diccionario['nombre_comprador']=nombre_compradores ; diccionario['Cedeula_comprador']=IDs_compradores
     diccionario['Fecha_venta']=fechas_venta
     
@@ -22,13 +22,16 @@ def AutoPartes(ventas:list):
 
 def consultaRegistro(ventas,idProducto):
     cont = 0
+    j=0
     for i in ventas['Id']:
+        j+=1
         if i == idProducto:
+            cont = 0
             id = i
             dproduct=ventas['descripcion_producto'][cont]
             npartes = ventas['numero_parte_producto'][cont]
             cant_ven = ventas['cant_prod_vend'][cont]
-            stock=ventas['stock_´roducto'][cont]
+            stock=ventas['stock_producto'][cont]
             nombre_comprador = ventas['nombre_comprador'][cont]
             cedula_comprador = ventas['Cedeula_comprador'][cont]
             fecha=ventas['Fecha_venta'][cont]
@@ -39,7 +42,10 @@ def consultaRegistro(ventas,idProducto):
             break
 
         else:
-            print('No hay registro de venta de ese producto')
+            if cont == 0 and j== len(ventas['Id']):
+                print('No hay registro de venta de ese producto')
+            else:
+               break
 
          
 
@@ -48,5 +54,5 @@ lista = [(10,'cohete militar',1,2,200,'Vladimir putin',100,'12/06/2020'),(100,'a
 registro = AutoPartes(lista)
 
 consulta =consultaRegistro(registro,1)
-#consultaRegistro(registro,2)
-print(len(registro['Id']))
+consultaRegistro(registro,2)
+#print(len(registro['Id']))

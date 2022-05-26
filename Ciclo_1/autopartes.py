@@ -18,9 +18,15 @@ def consultaRegistro(ventas, idProducto):
          
 
 
-lista = [(10,'cohete militar',1,2,200,'Vladimir putin',100,'12/06/2020'),(100,'ametralladora ligera',2,5,1000,'Timochenkp',22448475,'15/02/2001'),(1,'Bomba nuclear',5,1,4,'Donald Trump',25487,'15/09/2018')]
+lista = [
+ (2001,'rosca', 'PT29872',2,45,'Luis Molero',3456,'12/06/2020'),
+ (2010,'bujía', 'MS9512',4,15,'Carlos Rondon',1256,'12/06/2020'),
+ (2010,'bujía', 'ER6523',9,36,'Pedro Montes',1243,'12/06/2020'),
+ (3578,'tijera', 'QW8523',1,128,'Pedro Faria',1456,'12/06/2020'),
+ (9251,'piñón', 'EN5698',2,8,'Juan Peña',565,'12/06/2020')
+ ]
 registro = AutoPartes(lista)
 
-consulta =consultaRegistro(registro,1)
+consulta =consultaRegistro(registro,2010)
 consultaRegistro(registro,2)
 #print(len(registro['Id']))

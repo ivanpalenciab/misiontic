@@ -1,50 +1,17 @@
 def AutoPartes(ventas:list):
     diccionario = {}
-    IDs_producto=[i[0] for i in ventas if True]
-    descripciones_prod=[i[1] for i in ventas if True]
-    partes_prod=[i[2] for i in ventas if True]
-    cant_vend=[i[3] for i in ventas if True]
-    stock_prod=[i[4] for i in ventas if True]
-    nombre_compradores=[i[5] for i in ventas if True]
-    IDs_compradores=[i[6] for i in ventas if True]
-    fechas_venta=[i[7] for i in ventas if True]
-
-
-        
-
-    diccionario['Id']=IDs_producto ; diccionario['descripcion_producto']=descripciones_prod;diccionario['numero_parte_producto']=partes_prod
-    diccionario['cant_prod_vend']= cant_vend; diccionario['stock_producto']=stock_prod
-    diccionario['nombre_comprador']=nombre_compradores ; diccionario['Cedeula_comprador']=IDs_compradores
-    diccionario['Fecha_venta']=fechas_venta
+    for i in ventas:
+        if diccionario.get(i[0]) == None:
+            diccionario[i[0]] = []
+        diccionario.setdefault(i[0], []).append((i[1],i[2],i[3],i[4],i[5],i[6],i[7]))        
+    return diccionario    
     
-    return diccionario
-
-
-def consultaRegistro(ventas,idProducto):
-    cont = 0
-    for i in ventas['Id']:
-        if i == idProducto:
-            id = i
-            dproduct=ventas['descripcion_producto'][cont]
-            npartes = ventas['numero_parte_producto'][cont]
-            cant_ven = ventas['cant_prod_vend'][cont]
-            stock=ventas['stock_producto'][cont]
-            nombre_comprador = ventas['nombre_comprador'][cont]
-            cedula_comprador = ventas['Cedeula_comprador'][cont]
-            fecha=ventas['Fecha_venta'][cont]
-            cont +1
-            
-
-            print( f'Producto consultado : {id} Descripción {dproduct} #Parte {npartes} Cantidad vendida {cant_ven} Stock {stock} Comprador {nombre_comprador} Documento {cedula_comprador} Fecha Venta {fecha}')
-            break
-
-        else:
-            if len(ventas['Id'])-1 == cont:
-                print('No hay registro de venta de ese producto')
-                cont +1
-            else:
-                cont +1
-                continue
+def consultaRegistro(ventas, idProducto):    
+    if idProducto in ventas:
+        for k in ventas[idProducto]:                       
+            print("Producto consultado :", idProducto,  " Descripción ",  k[0],  " #Parte ",  k[1],  " Cantidad vendida ",  k[2],  " Stock ",  k[3],  " Comprador", k[4],  " Documento ",  k[5],  " Fecha Venta ",  k[6])
+    else:
+        print("No hay registro de venta de ese producto")
 
          
 

@@ -1,5 +1,6 @@
 def AutoPartes(ventas:list):
     diccionario = {}
+<<<<<<< HEAD
     IDs_producto=[i[0] for i in ventas if True]
     descripciones_prod=[i[1] for i in ventas if True]
     partes_prod=[i[2] for i in ventas if True]
@@ -46,6 +47,20 @@ def consultaRegistro(ventas,idProducto):
                 print('No hay registro de venta de ese producto')
             else:
                break
+=======
+    for i in ventas:
+        if diccionario.get(i[0]) == None:
+            diccionario[i[0]] = []
+        diccionario.setdefault(i[0], []).append((i[1],i[2],i[3],i[4],i[5],i[6],i[7]))        
+    return diccionario    
+    
+def consultaRegistro(ventas, idProducto):    
+    if idProducto in ventas:
+        for k in ventas[idProducto]:                       
+            print("Producto consultado :", idProducto,  " Descripción ",  k[0],  " #Parte ",  k[1],  " Cantidad vendida ",  k[2],  " Stock ",  k[3],  " Comprador", k[4],  " Documento ",  k[5],  " Fecha Venta ",  k[6])
+    else:
+        print("No hay registro de venta de ese producto")
+>>>>>>> for_way
 
          
 
